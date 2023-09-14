@@ -1,12 +1,14 @@
 Package: cccmdown
-Title: What the Package Does (One Line, Title Case)
+Title: CCCM Templates for R Markdown
 Version: 0.0.0.9000
 Authors@R: 
-    person("First", "Last", , "first.last@example.com", role = c("aut", "cre"),
-           comment = c(ORCID = "YOUR-ORCID-ID"))
-Description: What the package does (one paragraph).
-License: `use_mit_license()`, `use_gpl3_license()` or friends to pick a
-    license
+    c(person("Cédric", "Vidonne",
+             email = "cedric@vidonne.me",
+	     role = c("aut", "cre")),
+      person("UNHCR",
+         role = "cph"))
+Description: Produce documents compliant with CCCM brand identity.
+License: MIT + file LICENSE
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
