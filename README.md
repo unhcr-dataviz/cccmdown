@@ -13,7 +13,7 @@ public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostat
 status](https://www.r-pkg.org/badges/version/unhcrthemes)](https://CRAN.R-project.org/package=unhcrthemes)
 <!-- badges: end -->
 
-The goal of cccmdown is to ease and speed up the creation of reports
+The goal of `{cccmdown}` is to ease and speed up the creation of reports
 following the [CCCM brand
 identity](https://www.cccmcluster.org/branding-collection).
 
@@ -29,7 +29,7 @@ Get started by installing the `{cccmdown}` package from GitHub using the
 pak::pkg_install("unhcr-dataviz/cccmdown")
 ```
 
-## Contribution and Code of Conduct
+## Contribution
 
 Contributions to `{cccmdown}` are highly valued. If you have
 suggestions, uncover bugs, or envision new features, kindly submit an
