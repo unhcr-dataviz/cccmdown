@@ -2,7 +2,7 @@
 title: "Template Title"
 author: "Your Name"
 date: "The Date"
-output: TODO output_format
+output: cccmdown::paged_report
 ---
 
 ```{r setup, include=FALSE}
