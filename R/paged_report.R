@@ -15,6 +15,9 @@ paged_report <- function(
     other_css = NULL,
     number_sections = FALSE,
     ...) {
+    # TODO: add logic for coord_mec
+    # TODO: add css variable for country
+
     # css file
     paged_report_css <- pkg_resource("css/paged_report.css")
 
