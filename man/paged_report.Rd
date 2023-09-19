@@ -4,9 +4,20 @@
 \alias{paged_report}
 \title{Function for CCCM paged template}
 \usage{
-paged_report(other_css = NULL, number_sections = FALSE, ...)
+paged_report(
+  coord_mec = "cluster",
+  country = NULL,
+  other_css = NULL,
+  number_sections = FALSE,
+  ...
+)
 }
 \arguments{
+\item{coord_mec}{Coordination mecanism for the logo
+Select from "cluster", "sector" and "wg"}
+
+\item{country}{Country name}
+
 \item{other_css}{Add extra css}
 
 \item{number_sections}{Number section headings}
