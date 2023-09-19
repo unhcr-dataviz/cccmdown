@@ -1,0 +1,27 @@
+// Colors
+$primary: $cccm-bluesapphire;
+$secondary: $cccm-burntsienna;
+$tertiary: $cccm-ecruwhite;
+$success: $cccm-mossgreen;
+$danger: $cccm-burntsienna;
+$warning: lighten($cccm-burntsienna, 20%);
+$info: $cccm-steelblue;
+$light: $cccm-ecruwhite;
+$dark: $cccm-balticsea;
+
+// Grid
+$enable-grid-classes: false;
+$enable-cssgrid: true;
+$enable-dark-mode: false;
+
+// Typography
+$font-size-root: 13px;
+$body-color: $cccm-balticsea;
+$font-family-sans-serif: 'Inter', sans-serif;
+$font-family-monospace: 'Fira Code', monospace;
+$headings-color: $cccm-bluesapphire;
+$headings-font-weight: 700;
+$headings-margin-bottom: .75rem;
+$lead-font-weight: 400;
+$mark-bg: mix(white, $cccm-burntsienna, 70%);
+$code-color: $cccm-burntsienna;

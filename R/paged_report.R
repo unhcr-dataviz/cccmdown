@@ -1,14 +1,20 @@
 #' Function for CCCM paged template
 #'
+#' @param coord_mec Coordination mecanism for the logo
+#' Select from "cluster", "sector" and "wg"
+#' @param country Country name
 #' @param other_css Add extra css
 #' @param number_sections Number section headings
 #' @param ... Arguments passed to pagedown::html_paged
 #'
 #' @return A pagedown report
 #' @export
-paged_report <- function(other_css = NULL,
-                         number_sections = FALSE,
-                         ...) {
+paged_report <- function(
+    coord_mec = "cluster",
+    country = NULL,
+    other_css = NULL,
+    number_sections = FALSE,
+    ...) {
     # css file
     paged_report_css <- pkg_resource("css/paged_report.css")
 

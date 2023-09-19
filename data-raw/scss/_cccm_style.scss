@@ -1,0 +1,107 @@
+// ----------------- CCCM custom style ---------------------
+// Footnotes
+.footnote {
+  font-size: 0.85em !important;
+  font-style: italic;
+}
+
+.footnote sup,
+.footnote-ref {
+  text-decoration: none;
+  color: $cccm-burntsienna;
+  font-weight: 600;
+}
+
+// Lists
+ul li::marker,
+ol li::marker {
+  color: $cccm-burntsienna;
+}
+
+// Blockquotes
+blockquote {
+  text-align: center;
+}
+
+blockquote>:first-child {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 200;
+  margin-bottom: 0;
+  color: $cccm-bluesapphire;
+  quotes: "“" "”" "‘" "’";
+}
+
+blockquote>:last-child {
+  font-weight: 400;
+  font-size: .9rem;
+}
+
+blockquote>:last-child::before {
+  content: "— ";
+}
+
+blockquote>:first-child::before,
+blockquote>:only-child::before {
+  content: open-quote;
+}
+
+blockquote>:first-child::after,
+blockquote>:only-child::after {
+  content: close-quote;
+}
+
+blockquote>:only-child {
+  font-size: 1.25rem;
+  font-weight: 200;
+}
+
+pre {
+  padding: 0.2rem 0.4rem;
+  font-size: 0.875em;
+  background-color: mix(white, $cccm-ecruwhite, 50%);
+  border-radius: 0.25rem;
+}
+
+
+// TOC, LOT, LOF
+.toc ul, .lot ul, .lof ul {
+  list-style: none;
+  padding-left: 0;
+  overflow-x: clip;
+  font-size: 1.15rem;
+}
+.toc li {
+  font-weight: 700;
+  padding: 1.25mm 0;
+}
+.lot li, .lof li {
+  padding: 1.25mm 0;
+}
+.toc li li {
+  font-weight: 400;
+  padding: 0 .25mm;
+}
+.toc a, .lot a, .lof a {
+  text-decoration: none;
+  background: white;
+  color: $cccm-balticsea;
+  padding-left: 12mm;
+}
+.toc a::before, .lot a::before, .lof a::before  {
+  content: target-counter(attr(href), page, decimal-leading-zero);
+  float: left;
+  background: white;
+  color: $cccm-bluesapphire;
+}
+.lot a::before, .lof a::before {
+  font-weight: 700;
+}
+
+// LOA
+dt {
+  color: $cccm-bluesapphire;
+}
+abbr[title] {
+  text-decoration: none;
+}

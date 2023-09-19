@@ -1,3 +1,198 @@
-@import 'reset.scss';
+// 1. Include functions first (so you can manipulate colors, SVGs, calc, etc)
+@import "../node_modules/bootstrap/scss/functions";
+
+// 2. Include any default variable overrides here
 @import 'colors.scss';
 @import 'fonts.scss';
+@import 'bs_override.scss';
+
+// 3. Include remainder of required Bootstrap stylesheets (including any separate color mode stylesheets)
+@import "../node_modules/bootstrap/scss/variables";
+@import "../node_modules/bootstrap/scss/variables-dark";
+
+// 4. Include any default map overrides here
+
+// 5. Include remainder of required parts
+@import "../node_modules/bootstrap/scss/maps";
+@import "../node_modules/bootstrap/scss/mixins";
+@import "../node_modules/bootstrap/scss/root";
+
+// 6. Optionally include any other parts as needed
+@import "../node_modules/bootstrap/scss/utilities";
+@import "../node_modules/bootstrap/scss/reboot";
+@import "../node_modules/bootstrap/scss/type";
+@import "../node_modules/bootstrap/scss/images";
+// @import "../node_modules/bootstrap/scss/containers";
+@import "../node_modules/bootstrap/scss/grid";
+@import "../node_modules/bootstrap/scss/tables";
+// @import "../node_modules/bootstrap/scss/forms";
+// @import "../node_modules/bootstrap/scss/buttons";
+// @import "../node_modules/bootstrap/scss/transitions";
+// @import "../node_modules/bootstrap/scss/dropdown";
+// @import "../node_modules/bootstrap/scss/button-group";
+// @import "../node_modules/bootstrap/scss/nav";
+// @import "../node_modules/bootstrap/scss/navbar";
+// @import "../node_modules/bootstrap/scss/card";
+// @import "../node_modules/bootstrap/scss/accordion";
+// @import "../node_modules/bootstrap/scss/breadcrumb";
+// @import "../node_modules/bootstrap/scss/pagination";
+// @import "../node_modules/bootstrap/scss/badge";
+// @import "../node_modules/bootstrap/scss/alert";
+// @import "../node_modules/bootstrap/scss/progress";
+// @import "../node_modules/bootstrap/scss/list-group";
+// @import "../node_modules/bootstrap/scss/close";
+// @import "../node_modules/bootstrap/scss/toasts";
+// @import "../node_modules/bootstrap/scss/modal";
+// @import "../node_modules/bootstrap/scss/tooltip";
+// @import "../node_modules/bootstrap/scss/popover";
+// @import "../node_modules/bootstrap/scss/carousel";
+// @import "../node_modules/bootstrap/scss/spinners";
+// @import "../node_modules/bootstrap/scss/offcanvas";
+// @import "../node_modules/bootstrap/scss/placeholders";
+@import "../node_modules/bootstrap/scss/helpers";
+
+// 7. Optionally include utilities API last to generate classes based on the Sass map in `_utilities.scss`
+@import "../node_modules/bootstrap/scss/utilities/api";
+
+// 8. Add additional custom code here
+@import "paged_interface";
+@import "cccm_style";
+
+/* string variables */
+// h1.title {
+//   string-set: h1-title content(text);
+// }
+h1.subtitle {
+  string-set: subtitle content(text);
+}
+h2.date {
+  string-set: date content(text);
+}
+// h2.author {
+//   string-set: h2-author content(text);
+// }
+// address.author-afil {
+//   string-set: address-author-afil content(text);
+// }
+// a.email {
+//   string-set: a-author-email content(text);
+// }
+
+@page {
+  size: 210mm 297mm; /* var(--pagedjs-width) doesn't work in browser when printing */
+  margin: 37mm 25mm 25mm 25mm;
+}
+
+@page:blank {
+
+}
+
+/* normal page */
+@page {
+  background-image: url(../logo/footer.svg), url(../logo/cccm_logo_cluster.svg);
+  background-position: 15mm 276mm, 155mm 8mm;
+  background-size: 180mm, 40mm;
+  background-repeat: no-repeat, no-repeat;
+  @top-right-corner {
+    width: 55mm;
+    content: string(subtitle);
+    color: $cccm-burntsienna;
+    font-size: 1.15em;
+    font-weight: 600;
+    line-height: 1;
+    text-align: left;
+    margin-left: -30mm;
+    margin-top: 28mm;
+    padding-right: 15mm;
+    vertical-align: top;
+  }
+  @bottom-right {
+    content: counter(page);
+    color: $cccm-burntsienna;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-right: -10mm;
+    margin-bottom: 8mm;
+    vertical-align: bottom;
+  }
+}
+
+/* first page */
+@page:first {
+  margin: 45mm 25mm 25mm 25mm;
+  background-image: url(../logo/footer.svg), url(../logo/cccm_logo_cluster.svg);
+  background-position: 15mm 276mm, 145mm 15mm;
+  background-size: 180mm, 50mm;
+  background-repeat: no-repeat, no-repeat;
+  @top-right-corner {
+    width: 65mm;
+    content: string(subtitle);
+    color: $cccm-burntsienna;
+    font-size: 1.3em;
+    font-weight: 600;
+    line-height: 1;
+    text-align: left;
+    margin-left: -40mm;
+    margin-top: 40mm;
+    padding-right: 15mm;
+    vertical-align: top;
+  }
+  /* numbering */
+  @bottom-right {
+    content: counter(page);
+    color: $cccm-burntsienna;
+    font-size: 0.85em;
+    font-weight: 600;
+    margin-right: -10mm;
+    margin-bottom: 8mm;
+    vertical-align: bottom;
+  }
+}
+
+/* --------------------- CSS Fragmentation --------------------------- */
+/* page breaks; aka CSS fragmentation */
+
+.front-page {
+  counter-reset: page 1;
+}
+
+.section > h1,
+.toc > h1 {
+    break-before: always;
+}
+
+.section > h1, .toc > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
+  break-after: avoid;
+}
+.footenote {
+  break-before: always;
+  break-after: always;
+}
+
+/* do not break textbox */
+.bg-primary, .bg-secondary, .bg-tertiary, 
+.bg-success, .bg-danger, .bg-warning, .bg-info,
+.bg-light, .bg-dark, .figure {
+  break-inside: avoid;
+}
+
+/* do not break captions */
+caption {
+  break-inside: avoid;
+  break-after: avoid;
+}
+
+/* url in text */
+a[href^="http"]:not([class="uri"])::after {
+  content: " (" attr(href) ")";
+  font-size: 90%;
+  hyphens: none;
+  word-break: break-all;
+}
+.main a[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
+  content: " (page " target-counter(attr(href), page) ")";
+}
+/* do not include page references in code blocks */
+.sourceCode a[href^="#"]:not([class^="footnote-"]):not([href*=":"])::after {
+  content: unset;
+}
