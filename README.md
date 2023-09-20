@@ -29,6 +29,38 @@ Get started by installing the `{cccmdown}` package from GitHub using the
 pak::pkg_install("unhcr-dataviz/cccmdown")
 ```
 
+## Usage
+
+## Usage
+
+The `{cccmdown::paged_report}` template is designed for R Markdown
+projects, simply put the following code in your R Markdown header. For
+example:
+
+``` yaml
+---
+title: "CCCM report"
+date: "20 September 2023"
+output:
+  cccmdown::paged_report:
+    coord_mec: "cluster"
+    country: "Country name"
+---
+```
+
+You can also open a `{cccmdown::paged_report}` template using
+**RStudio**:
+
+1.  Click the “File” menu then “New File” and choose “R Markdown”.
+2.  In the “From Template” tab, choose the **CCCM Paged** built-in
+    template.
+
+## Acknowledgements
+
+We extend our gratitude to the creators of the
+[`{pagedown}`](https://github.com/rstudio/pagedown) package that
+influenced the development of `{cccmdown}`.
+
 ## Contribution
 
 Contributions to `{cccmdown}` are highly valued. If you have
