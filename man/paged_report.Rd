@@ -16,7 +16,7 @@ paged_report(
 \item{coord_mec}{Coordination mecanism for the logo
 Select from "cluster", "sector" and "wg"}
 
-\item{country}{Country name}
+\item{country}{Country name, e.g. "Nigeria"}
 
 \item{other_css}{Add extra css}
 
