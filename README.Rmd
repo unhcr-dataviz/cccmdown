@@ -36,8 +36,6 @@ pak::pkg_install("unhcr-dataviz/cccmdown")
 
 ## Usage
 
-## Usage
-
 The `{cccmdown::paged_report}` template is designed for R Markdown projects, simply put the following code in your R Markdown header. For example:
 
 ```yaml
