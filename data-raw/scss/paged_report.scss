@@ -58,28 +58,21 @@
 @import "paged_interface";
 @import "cccm_style";
 
-/* string variables */
-// h1.title {
-//   string-set: h1-title content(text);
-// }
-h1.subtitle {
-  string-set: subtitle content(text);
+// --------------------- Layout Paged ---------------------------
+// String variables
+div.country {
+  string-set: country content(text);
+}
+h1.title {
+  string-set: title content(text);
 }
 h2.date {
   string-set: date content(text);
 }
-// h2.author {
-//   string-set: h2-author content(text);
-// }
-// address.author-afil {
-//   string-set: address-author-afil content(text);
-// }
-// a.email {
-//   string-set: a-author-email content(text);
-// }
 
+// Page format
 @page {
-  size: 210mm 297mm; /* var(--pagedjs-width) doesn't work in browser when printing */
+  size: 210mm 297mm;
   margin: 37mm 25mm 25mm 25mm;
 }
 
@@ -87,15 +80,26 @@ h2.date {
 
 }
 
-/* normal page */
+// Basic page layout
 @page {
-  background-image: url(../logo/footer.svg), url(../logo/cccm_logo_cluster.svg);
+  background-image: url(../logo/footer.svg), var(--cccm-logo);
   background-position: 15mm 276mm, 155mm 8mm;
   background-size: 180mm, 40mm;
   background-repeat: no-repeat, no-repeat;
+  @top-left {
+    content: string(title) " - " string(date);
+    color: $cccm-bluesapphire;
+    font-size: .9em;
+    font-weight: 400;
+    line-height: 1;
+    text-align: left;
+    vertical-align: top;
+    margin-top: 12mm;
+    margin-left: -10mm;
+  }
   @top-right-corner {
     width: 55mm;
-    content: string(subtitle);
+    content: string(country);
     color: $cccm-burntsienna;
     font-size: 1.15em;
     font-weight: 600;
@@ -107,7 +111,7 @@ h2.date {
     vertical-align: top;
   }
   @bottom-right {
-    content: counter(page);
+    content: counter(page, decimal-leading-zero);
     color: $cccm-burntsienna;
     font-size: 0.85em;
     font-weight: 600;
@@ -117,16 +121,27 @@ h2.date {
   }
 }
 
-/* first page */
+// Fist page layout
 @page:first {
   margin: 45mm 25mm 25mm 25mm;
-  background-image: url(../logo/footer.svg), url(../logo/cccm_logo_cluster.svg);
+  background-image: url(../logo/footer.svg), var(--cccm-logo);
   background-position: 15mm 276mm, 145mm 15mm;
   background-size: 180mm, 50mm;
   background-repeat: no-repeat, no-repeat;
+  @top-left {
+    content: "Supporting displaced communities";
+    color: $cccm-bluesapphire;
+    font-size: 1.1em;
+    font-weight: 400;
+    line-height: 1;
+    text-align: left;
+    vertical-align: top;
+    margin-top: 15mm;
+    margin-left: -10mm;
+  }
   @top-right-corner {
     width: 65mm;
-    content: string(subtitle);
+    content: string(country);
     color: $cccm-burntsienna;
     font-size: 1.3em;
     font-weight: 600;
@@ -137,9 +152,8 @@ h2.date {
     padding-right: 15mm;
     vertical-align: top;
   }
-  /* numbering */
   @bottom-right {
-    content: counter(page);
+    content: counter(page, decimal-leading-zero);
     color: $cccm-burntsienna;
     font-size: 0.85em;
     font-weight: 600;
@@ -149,18 +163,47 @@ h2.date {
   }
 }
 
-/* --------------------- CSS Fragmentation --------------------------- */
-/* page breaks; aka CSS fragmentation */
+// Filter non required elements
+div.country,
+.front-page .author,
+.front-page .author-afil,
+.front-page .author-email,
+.front-page .email,
+.front-page .abstract {
+  display: none;
+}
+// Make sure they don't appear even if turn on in the yaml
+.toc, .lot, .lof, .loa {
+  display: none; 
+}
 
+// Styles for the front page
+.title-page {
+  margin: -12mm 45mm 10mm -10mm;
+}
+.title,
+.subtitle,
+.date {
+  margin-bottom: .25rem;
+}
+.subtitle,
+.date {
+  line-height: 1.1;
+  color: $cccm-balticsea;
+}
+.subtitle {
+  font-size: 1.5em;
+  font-weight: 400;
+}
+.date {
+  font-size: 1.25em;
+  font-weight: 600;
+}
+
+// Breaks
 .front-page {
   counter-reset: page 1;
 }
-
-.section > h1,
-.toc > h1 {
-    break-before: always;
-}
-
 .section > h1, .toc > h1, .section > h2, .section > h3, .section > h4, .section > h5, .section > h6 {
   break-after: avoid;
 }
@@ -168,20 +211,15 @@ h2.date {
   break-before: always;
   break-after: always;
 }
-
-/* do not break textbox */
 .bg-primary, .bg-secondary, .bg-tertiary, 
 .bg-success, .bg-danger, .bg-warning, .bg-info,
 .bg-light, .bg-dark, .figure {
   break-inside: avoid;
 }
-
-/* do not break captions */
 caption {
   break-inside: avoid;
   break-after: avoid;
 }
-
 /* url in text */
 a[href^="http"]:not([class="uri"])::after {
   content: " (" attr(href) ")";
