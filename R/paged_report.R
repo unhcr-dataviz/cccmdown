@@ -16,11 +16,11 @@ paged_report <- function(
     number_sections = FALSE,
     ...) {
     # coord_mec logo
-    coord_mec_var <- dplyr::case_when(
-        coord_mec == "cluster" ~ pkg_resource("logo/cccm_logo_cluster.svg"),
-        coord_mec == "sector" ~ pkg_resource("logo/cccm_logo_sector.svg"),
-        coord_mec == "wg" ~ pkg_resource("logo/cccm_logo_wg.svg"),
-        TRUE ~ pkg_resource("logo/cccm_logo_cluster.svg")
+    coord_mec_var <- switch(coord_mec,
+        "cluster" = pkg_resource("logo/cccm_logo_cluster.svg"),
+        "sector" = pkg_resource("logo/cccm_logo_sector.svg"),
+        "wg" = pkg_resource("logo/cccm_logo_wg.svg"),
+        pkg_resource("logo/cccm_logo_cluster.svg")
     )
     coord_mec_var <- paste0(
         ":root { --cccm-logo: url(",
