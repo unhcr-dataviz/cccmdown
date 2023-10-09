@@ -8,13 +8,12 @@ output:
     country: "Switzerland"
 paged-footnotes: true
 links-to-footnotes: true
+# uncomment this line to produce HTML and PDF in RStudio:
+# knit: pagedown::chrome_print
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
-# Load required packages
-library(ggplot2)
-library(unhcrthemes)
 ```
 
 ::: {.lead .text-secondary}
@@ -253,9 +252,12 @@ See the layout section for more information on how to play with images and colum
 
 ## Plots
 
-Use the [`{unhcrthemes}`](https://github.com/unhcr-dataviz/unhcrthemes) package to produce UNHCR branded plots directly in the presentation. Will be adapted soon for CCCM. For example: 
+Use the [`{cccmthemes}`](https://github.com/unhcr-dataviz/cccmthemes) package to produce CCCM branded plots directly in the report. For example: 
 
-```{r idp-plot, fig.align = "center", out.width = "90%", warning = FALSE, echo = TRUE}
+```{r plot, fig.align = "center", out.width = "90%", warning = FALSE, echo = TRUE}
+library(ggplot2)
+library(cccmthemes)
+
 ggplot(
     mtcars,
     aes(x = hp, y = mpg)
@@ -263,12 +265,12 @@ ggplot(
     geom_point(color = "#1B657C") +
     labs(
         title = "Simple scatterplot with ggplot",
-        subtitle = "This plot shows the default style of theme_unhcr()",
+        subtitle = "This plot shows the default style of theme_cccm()",
         x = "Horsepower (hp)",
         y = "Fuel efficiency (mpg)",
         caption = "Source: mtcars"
     ) +
-    theme_unhcr()
+    cccmthemes::theme_cccm()
 ```
 
 \newpage
