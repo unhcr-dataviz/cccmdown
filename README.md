@@ -38,7 +38,7 @@ example:
 ``` yaml
 ---
 title: "CCCM report"
-date: "20 September 2023"
+date: "12 November 2023"
 output:
   cccmdown::paged_report:
     coord_mec: "cluster"
@@ -52,6 +52,12 @@ You can also open a `{cccmdown::paged_report}` template using
 1.  Click the “File” menu then “New File” and choose “R Markdown”.
 2.  In the “From Template” tab, choose the **CCCM Paged** built-in
     template.
+
+Note that you will need to serve the output using a web server if using
+`self_contained: false` due to [browser security
+policy](https://developer.mozilla.org/en-US/docs/Web/Security/Same-origin_policy#file_origins).
+The easiest way to do that during local development is to call
+`servr::httd()` on the output directory.
 
 ## Acknowledgements
 

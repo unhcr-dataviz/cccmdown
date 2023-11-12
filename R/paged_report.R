@@ -43,6 +43,7 @@ paged_report <- function(
         includes = list(before_body = country_html),
         css = c(coord_mec_css, paged_report_css, other_css),
         number_sections = number_sections,
+        copy_resources = TRUE,
         ...
     )
 }
