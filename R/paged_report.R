@@ -22,26 +22,35 @@ paged_report <- function(
         "wg" = pkg_resource("logo/cccm_logo_wg.svg"),
         pkg_resource("logo/cccm_logo_cluster.svg")
     )
-    coord_mec_var <- paste0(
+
+    # footer shape
+    footer_var <- pkg_resource("utils/footer.svg")
+
+    # create cccm css variable
+    cccm_css_var <- paste0(
         ":root { --cccm-logo: url(",
         knitr::image_uri(coord_mec_var),
+        "); --cccm-footer: url(",
+        knitr::image_uri(footer_var),
         ");}"
     )
-    coord_mec_css <- tempfile(fileext = ".css")
-    writeLines(coord_mec_var, con = coord_mec_css)
+
+    # write css variable to file
+    var_css <- tempfile(fileext = ".css")
+    writeLines(cccm_css_var, con = var_css)
 
     # country name
     country_var <- paste0("<div class='country'>", country, "</div>")
     country_html <- tempfile(fileext = ".html")
     writeLines(country_var, con = country_html)
 
-    # css file
+    # load report css file
     paged_report_css <- pkg_resource("css/paged_report.css")
 
     # template
     pagedown::html_paged(
         includes = list(before_body = country_html),
-        css = c(coord_mec_css, paged_report_css, other_css),
+        css = c(var_css, paged_report_css, other_css),
         number_sections = number_sections,
         ...
     )

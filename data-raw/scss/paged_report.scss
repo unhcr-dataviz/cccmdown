@@ -82,7 +82,7 @@ h2.date {
 
 // Basic page layout
 @page {
-  background-image: url(../logo/footer.svg), var(--cccm-logo);
+  background-image: var(--cccm-footer), var(--cccm-logo);
   background-position: 15mm 276mm, 155mm 8mm;
   background-size: 180mm, 40mm;
   background-repeat: no-repeat, no-repeat;
@@ -124,7 +124,7 @@ h2.date {
 // Fist page layout
 @page:first {
   margin: 45mm 25mm 25mm 25mm;
-  background-image: url(../logo/footer.svg), var(--cccm-logo);
+  background-image: var(--cccm-footer), var(--cccm-logo);
   background-position: 15mm 276mm, 145mm 15mm;
   background-size: 180mm, 50mm;
   background-repeat: no-repeat, no-repeat;
